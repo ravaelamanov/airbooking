@@ -1,19 +1,32 @@
 package com.airbooking.ui.controllers;
 
+import com.airbooking.bl.services.UserService;
+import com.airbooking.ui.dto.UserDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("users")
 public class UserController {
 
+    @Autowired
+    private UserService userService;
+
+    @GetMapping
+    public Iterable<UserDto> getUsers() {
+        return userService.findAll();
+    }
+
     @GetMapping(path = "/{userId}")
-    public String getUser(@PathVariable Integer userId) {
-        return "this is a test get http response" + " " + userId;
+    public UserDto getUser(@PathVariable Long userId) {
+        return userService.findById(userId);
     }
 
     @PostMapping
-    public String createUser() {
-        return "this is a test post http response";
+    public UserDto createUser(@Valid @RequestBody UserDto userDto) {
+        return userService.createUser(userDto);
     }
 
     @PutMapping
