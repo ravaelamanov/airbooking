@@ -32,14 +32,14 @@ public abstract class AbstractService<Dto, Entity, ID> implements IService<Dto, 
     }
 
     @Override
-    public Dto createUser(Dto userDto) {
-        Entity entity = toEntity(userDto);
+    public Dto create(Dto dto) {
+        Entity entity = toEntity(dto);
         return toDto(repository.save(entity));
     }
 
     @Override
-    public Dto updateUser(Dto userDto) {
-        Entity entity = toEntity(userDto);
+    public Dto update(Dto dto) {
+        Entity entity = toEntity(dto);
         return toDto(repository.save(entity));
     }
 

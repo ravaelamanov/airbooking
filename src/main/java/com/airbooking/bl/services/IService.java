@@ -1,13 +1,13 @@
 package com.airbooking.bl.services;
 
-public interface IService<T, ID> {
-    Iterable<T> findAll();
+public interface IService<Dto, ID> {
+    Iterable<Dto> findAll();
 
-    T findById(ID id);
+    Dto findById(ID id);
 
-    T createUser(T userDto);
+    Dto create(Dto dto);
 
-    T updateUser(T userDto);
+    Dto update(Dto dto);
 
     void deleteById(ID id);
 }

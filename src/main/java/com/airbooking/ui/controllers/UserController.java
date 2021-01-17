@@ -26,13 +26,13 @@ public class UserController {
 
     @PostMapping
     public UserDto createUser(@Valid @RequestBody UserDto userDto) {
-        return userService.createUser(userDto);
+        return userService.create(userDto);
     }
 
     @PutMapping(path = "/{userId}")
-    public UserDto updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) {
+    public UserDto updateUser(@PathVariable Long userId, @Valid @RequestBody UserDto userDto) {
         userDto.setId(userId);
-        return userService.updateUser(userDto);
+        return userService.update(userDto);
     }
 
     @DeleteMapping(path = "/{userId}")
