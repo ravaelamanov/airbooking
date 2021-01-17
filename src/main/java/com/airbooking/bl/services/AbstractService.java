@@ -1,56 +1,67 @@
 package com.airbooking.bl.services;
 
-import com.airbooking.da.entities.User;
-import com.airbooking.ui.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public abstract class AbstractService<T> implements IService<T>  {
+public abstract class AbstractService<Dto, Entity, ID> implements IService<Dto, ID>  {
+
     @Autowired
     protected ModelMapper modelMapper;
 
-    @Override
-    public Iterable<T> findAll() {
-        return toDto(userRepository.findAll());
+    protected CrudRepository<Entity, ID> repository;
+
+    protected AbstractService(CrudRepository<Entity, ID> repository) {
+        this.repository = repository;
     }
 
     @Override
-    public T findById(long id) {
-        return null;
+    public Iterable<Dto> findAll() {
+        return toDto(repository.findAll());
     }
 
     @Override
-    public T createUser(T userDto) {
-        return null;
+    public Dto findById(ID id) {
+        Optional<Entity> userOptional = repository.findById(id);
+        Entity entity = userOptional.orElse(null);
+        return toDto(entity);
     }
 
     @Override
-    public T updateUser(T userDto) {
-        return null;
+    public Dto createUser(Dto userDto) {
+        Entity entity = toEntity(userDto);
+        return toDto(repository.save(entity));
     }
 
     @Override
-    public void deleteById(Long id) {
-
+    public Dto updateUser(Dto userDto) {
+        Entity entity = toEntity(userDto);
+        return toDto(repository.save(entity));
     }
 
-    protected abstract <U> T toDto(U entity);
-    protected abstract <U> U toEntity(T dto);
+    @Override
+    public void deleteById(ID id) {
+        repository.deleteById(id);
+    }
 
-    protected <U> Iterable<U> toEntity(Iterable<T> dtos) {
-        List<U> users = new ArrayList<>();
-        for (T dto : dtos) {
+    protected abstract Dto toDto(Entity entity);
+    protected abstract Entity toEntity(Dto dto);
+
+    protected Iterable<Entity> toEntity(Iterable<Dto> dtos) {
+        List<Entity> users = new ArrayList<>();
+        for (Dto dto : dtos) {
             users.add(toEntity(dto));
         }
         return users;
     }
 
-    protected <U> Iterable<T> toDto(Iterable<U> entities) {
-        List<T> dtos = new ArrayList<>();
-        for (U entity : entities) {
+    protected Iterable<Dto> toDto(Iterable<Entity> entities) {
+        List<Dto> dtos = new ArrayList<>();
+        for (Entity entity : entities) {
             dtos.add(toDto(entity));
         }
         return dtos;
