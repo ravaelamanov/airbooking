@@ -33,8 +33,16 @@ public class UserService {
 
     public UserDto createUser(UserDto userDto) {
         User user = toEntity(userDto);
-        userRepository.save(user);
-        return toDto(user);
+        return toDto(userRepository.save(user));
+    }
+
+    public UserDto updateUser(UserDto userDto) {
+        User user = toEntity(userDto);
+        return toDto(userRepository.save(user));
+    }
+
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
     private User toEntity(UserDto userDto) {

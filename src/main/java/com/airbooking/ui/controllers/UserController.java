@@ -29,13 +29,14 @@ public class UserController {
         return userService.createUser(userDto);
     }
 
-    @PutMapping
-    public String updateUser() {
-        return "this is a test put http response";
+    @PutMapping(path = "/{userId}")
+    public UserDto updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) {
+        userDto.setId(userId);
+        return userService.updateUser(userDto);
     }
 
-    @DeleteMapping
-    public String deleteUser() {
-        return "this is a test delete http response";
+    @DeleteMapping(path = "/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        userService.deleteById(userId);
     }
 }
