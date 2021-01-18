@@ -15,9 +15,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//TODO Add test methods for all the UserRepository methods
-//FIXME @Before annotation doesn't work
-
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UserRepositoryIntegrationTests {
