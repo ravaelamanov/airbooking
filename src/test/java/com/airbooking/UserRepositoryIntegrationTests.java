@@ -4,14 +4,12 @@ import com.airbooking.da.entities.User;
 import com.airbooking.da.repositories.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class UserRepositoryIntegrationTests {
 
     @Before
     public void setUp(){
-        User user = new User();
+        user = new User();
         user.setUserName("name");
         user.setEmail("user@gmail.com");
         user.setPassword("pass");
@@ -53,5 +51,61 @@ public class UserRepositoryIntegrationTests {
         //then
         assertThat(userList.size()).isEqualTo(1);
         assertThat(userList.get(0).getUserName()).isEqualTo(user.getUserName());
+        assertThat(userList.get(0).getEmail()).isEqualTo(user.getEmail());
+        assertThat(userList.get(0).getPassword()).isEqualTo(user.getPassword());
     }
+
+    @Test
+    public void givenUserId_whenFindById_thenRetrievedMatchesPersisted() {
+        //given
+        User persistedUser = testEntityManager.persistAndFlush(user);
+
+        //when
+        User retrievedUser = userRepository.findById(persistedUser.getId()).get();
+
+        //then
+        assertThat(retrievedUser.getUserName()).isEqualTo(persistedUser.getUserName());
+        assertThat(retrievedUser.getEmail()).isEqualTo(persistedUser.getEmail());
+        assertThat(retrievedUser.getPassword()).isEqualTo(persistedUser.getPassword());
+    }
+
+    @Test
+    public void givenUser_whenSaveUser_thenRetrievedMatchesPersisted() {
+        //given
+        //when
+        User persistedUser = userRepository.save(user);
+        //then
+        User retrievedUser = testEntityManager.find(user.getClass(), user.getId());
+        assertThat(retrievedUser.getUserName()).isEqualTo(persistedUser.getUserName());
+        assertThat(retrievedUser.getEmail()).isEqualTo(persistedUser.getEmail());
+        assertThat(retrievedUser.getPassword()).isEqualTo(persistedUser.getPassword());
+    }
+
+    @Test
+    public void givenPersistedUser_whenUpdateUser_thenRetrievedUserMatchesUpdatedUser() {
+        //given
+        User persistedUser = testEntityManager.persistAndFlush(user);
+        //when
+        persistedUser.setUserName("updatedUserName");
+        persistedUser.setPassword("updatedPassword");
+        persistedUser.setEmail("udpatedEmail@gmail.com");
+        User updatedUser = userRepository.save(persistedUser);
+        //then
+        User retrievedUser = testEntityManager.find(updatedUser.getClass(), updatedUser.getId());
+        assertThat(updatedUser.getId()).isEqualTo(retrievedUser.getId());
+        assertThat(updatedUser.getUserName()).isEqualTo(retrievedUser.getUserName());
+        assertThat(updatedUser.getEmail()).isEqualTo(retrievedUser.getEmail());
+        assertThat(updatedUser.getPassword()).isEqualTo(retrievedUser.getPassword());
+    }
+
+    @Test
+    public void givenPersistedUserId_whenDeleteById_thenFindByIdIsNull() {
+        //given
+        User persistedUser = testEntityManager.persist(user);
+        //when
+        userRepository.deleteById(user.getId());
+        //then
+        assertThat(testEntityManager.find(user.getClass(), persistedUser.getId())).isNull();
+    }
+
 }
