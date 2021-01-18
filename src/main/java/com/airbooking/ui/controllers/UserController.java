@@ -39,4 +39,6 @@ public class UserController {
     public void deleteUser(@PathVariable Long userId) {
         userService.deleteById(userId);
     }
+
+    //TODO Create models for http requests and responses
 }
