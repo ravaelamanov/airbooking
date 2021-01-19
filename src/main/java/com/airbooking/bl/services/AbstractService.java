@@ -1,14 +1,15 @@
 package com.airbooking.bl.services;
 
+import com.airbooking.exceptions.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
-public abstract class AbstractService<Dto, Entity, ID> implements IService<Dto, ID>  {
+public abstract class AbstractService<Dto, Entity, ID> implements IService<Dto, ID> {
 
     @Autowired
     protected ModelMapper modelMapper;
@@ -26,8 +27,12 @@ public abstract class AbstractService<Dto, Entity, ID> implements IService<Dto, 
 
     @Override
     public Dto findById(ID id) {
-        Optional<Entity> userOptional = repository.findById(id);
-        Entity entity = userOptional.orElse(null);
+        Entity entity;
+        try {
+            entity = repository.findById(id).get();
+        } catch (NoSuchElementException exception) {
+            throw new ResourceNotFoundException("Entity not found. Entity id: " + id.toString());
+        }
         return toDto(entity);
     }
 
@@ -49,6 +54,7 @@ public abstract class AbstractService<Dto, Entity, ID> implements IService<Dto, 
     }
 
     protected abstract Dto toDto(Entity entity);
+
     protected abstract Entity toEntity(Dto dto);
 
     protected Iterable<Entity> toEntity(Iterable<Dto> dtos) {
