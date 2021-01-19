@@ -1,7 +1,7 @@
 package com.airbooking.ui.controllers;
 
 import com.airbooking.bl.services.UserService;
-import com.airbooking.ui.dto.UserDto;
+import com.airbooking.bl.dto.UserDto;
 import com.airbooking.ui.models.request.UserUpdateRequestModel;
 import com.airbooking.ui.models.request.UserRequestModel;
 import com.airbooking.ui.models.response.UserResponseModel;

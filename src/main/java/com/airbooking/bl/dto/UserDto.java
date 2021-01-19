@@ -1,4 +1,4 @@
-package com.airbooking.ui.dto;
+package com.airbooking.bl.dto;
 
 public class UserDto {
 

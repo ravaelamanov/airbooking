@@ -2,7 +2,7 @@ package com.airbooking.bl.services;
 
 import com.airbooking.da.entities.User;
 import com.airbooking.da.repositories.UserRepository;
-import com.airbooking.ui.dto.UserDto;
+import com.airbooking.bl.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
