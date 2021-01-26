@@ -19,7 +19,6 @@ public class Seat {
     private SeatClass seatClass;
 
     @ManyToOne
-    @Column(nullable = false)
     private Airplane airplane;
 
     public Long getId() {
