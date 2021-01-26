@@ -19,6 +19,16 @@ public class Airplane {
     @OneToMany(mappedBy = "airplane")
     private List<Seat> seats;
 
+    @OneToMany(mappedBy = "airplane")
+    private List<Flight> flights;
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
 
     public Long getId() {
         return Id;
