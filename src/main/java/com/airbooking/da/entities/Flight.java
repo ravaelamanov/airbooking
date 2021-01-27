@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "FLIGHTS")
@@ -29,13 +30,17 @@ public class Flight {
     private String arrivalAirport;
 
     @Column(nullable = false)
-    private String departureCountry;
+    private String departureCity;
 
     @Column(nullable = false)
-    private String arrivalCountry;
+    private String arrivalCity;
 
     @ManyToOne
     private Airplane airplane;
+
+    @OneToMany
+    private List<Passenger> passengers;
+
 
 
     public Long getID() {
@@ -86,20 +91,20 @@ public class Flight {
         this.arrivalAirport = arrivalAirport;
     }
 
-    public String getDepartureCountry() {
-        return departureCountry;
+    public String getDepartureCity() {
+        return departureCity;
     }
 
-    public void setDepartureCountry(String departureCountry) {
-        this.departureCountry = departureCountry;
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
     }
 
-    public String getArrivalCountry() {
-        return arrivalCountry;
+    public String getArrivalCity() {
+        return arrivalCity;
     }
 
-    public void setArrivalCountry(String arrivalCountry) {
-        this.arrivalCountry = arrivalCountry;
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
     }
 
     public Airplane getAirplane() {
@@ -108,5 +113,13 @@ public class Flight {
 
     public void setAirplane(Airplane airplane) {
         this.airplane = airplane;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
     }
 }
