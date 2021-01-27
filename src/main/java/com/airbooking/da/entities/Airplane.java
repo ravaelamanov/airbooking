@@ -17,7 +17,7 @@ public class Airplane {
     private String name;
 
     @OneToMany(mappedBy = "airplane")
-    private List<Seat> seats;
+    private AirplaneSeatsInfo airplaneSeatsInfo;
 
     @OneToMany(mappedBy = "airplane")
     private List<Flight> flights;
@@ -25,6 +25,7 @@ public class Airplane {
     public List<Flight> getFlights() {
         return flights;
     }
+
 
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
@@ -46,11 +47,11 @@ public class Airplane {
         this.name = name;
     }
 
-    public List<Seat> getSeats() {
-        return seats;
+    public AirplaneSeatsInfo getAirplaneSeatsInfo() {
+        return airplaneSeatsInfo;
     }
 
-    public void setSeats(List<Seat> seats) {
-        this.seats = seats;
+    public void setAirplaneSeatsInfo(AirplaneSeatsInfo airplaneSeatsInfo) {
+        this.airplaneSeatsInfo = airplaneSeatsInfo;
     }
 }
