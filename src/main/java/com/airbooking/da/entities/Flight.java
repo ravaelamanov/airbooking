@@ -41,8 +41,6 @@ public class Flight {
     @OneToMany
     private List<Passenger> passengers;
 
-
-
     public Long getID() {
         return ID;
     }
