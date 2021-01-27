@@ -16,7 +16,7 @@ public class Airplane {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "airplane")
+    @OneToOne(mappedBy = "airplane")
     private AirplaneSeatsInfo airplaneSeatsInfo;
 
     @OneToMany(mappedBy = "airplane")
