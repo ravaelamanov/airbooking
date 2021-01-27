@@ -12,14 +12,4 @@ public class UserService extends AbstractService<UserDto, User, Long> {
     protected UserService(@Autowired UserRepository repository) {
         super(repository);
     }
-
-    @Override
-    protected User toEntity(UserDto userDto) {
-        return modelMapper.map(userDto, User.class);
-    }
-
-    @Override
-    protected UserDto toDto(User user) {
-        return modelMapper.map(user, UserDto.class);
-    }
 }
