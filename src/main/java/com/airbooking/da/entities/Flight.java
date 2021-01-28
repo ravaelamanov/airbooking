@@ -12,10 +12,10 @@ public class Flight {
     @Id
     @GeneratedValue(generator = "incrementor")
     @GenericGenerator(name = "incrementor", strategy = "increment")
-    private Long ID;
+    private Long Id;
 
     @Column(nullable = false, unique = true)
-    private String FlightNo;
+    private String flightNo;
 
     @Column(nullable = false)
     private LocalDateTime departureDateTime;
@@ -41,20 +41,23 @@ public class Flight {
     @OneToMany(mappedBy = "flight")
     private List<Passenger> passengers;
 
-    public Long getID() {
-        return ID;
+    @OneToOne(mappedBy = "flight")
+    private SeatsPriceList seatsPriceList;
+
+    public Long getId() {
+        return Id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.Id = id;
     }
 
     public String getFlightNo() {
-        return FlightNo;
+        return flightNo;
     }
 
     public void setFlightNo(String flightNo) {
-        FlightNo = flightNo;
+        this.flightNo = flightNo;
     }
 
     public LocalDateTime getDepartureDateTime() {
@@ -119,5 +122,13 @@ public class Flight {
 
     public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
+    }
+
+    public SeatsPriceList getSeatsPriceList() {
+        return seatsPriceList;
+    }
+
+    public void setSeatsPriceList(SeatsPriceList seatsPriceList) {
+        this.seatsPriceList = seatsPriceList;
     }
 }
