@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface IMapper<Dto, Entity> {
     Dto toDto(Entity entity);
+
     Entity toEntity(Dto dto);
 
     default Iterable<Entity> toEntity(Iterable<Dto> dtos) {
