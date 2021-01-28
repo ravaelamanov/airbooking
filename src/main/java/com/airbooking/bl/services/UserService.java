@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService extends AbstractService<UserDto, User, Long> {
-
     protected UserService(@Autowired UserRepository repository) {
         super(repository);
     }
