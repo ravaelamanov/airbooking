@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "SEATSPRICELIST")
+@Table(name = "SeatsPriceList")
 public class SeatsPriceList {
     @Id
     @GeneratedValue(generator = "incrementor")
