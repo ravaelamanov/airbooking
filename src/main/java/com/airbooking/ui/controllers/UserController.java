@@ -1,6 +1,6 @@
 package com.airbooking.ui.controllers;
 
-import com.airbooking.bl.services.UserService;
+import com.airbooking.bl.services.IService;
 import com.airbooking.bl.dto.UserDto;
 import com.airbooking.ui.models.request.UserUpdateRequestModel;
 import com.airbooking.ui.models.request.UserRequestModel;
@@ -19,7 +19,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private IService<UserDto, Long> userService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -51,7 +51,7 @@ public class UserController {
     public UserResponseModel updateUser(@PathVariable Long userId,
                                         @Valid @RequestBody UserUpdateRequestModel userUpdateRequestModel) {
         UserDto userDto = userService.findById(userId);
-        userDto.setName(userUpdateRequestModel.getName());
+        userDto.setUserName(userUpdateRequestModel.getName());
         return modelMapper.map(userService.update(userDto), UserResponseModel.class);
     }
 
