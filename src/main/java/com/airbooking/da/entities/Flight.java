@@ -38,7 +38,7 @@ public class Flight {
     @ManyToOne
     private Airplane airplane;
 
-    @OneToMany
+    @OneToMany(mappedBy = "flight")
     private List<Passenger> passengers;
 
     public Long getID() {
