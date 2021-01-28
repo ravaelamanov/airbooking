@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public class UserRequestModel {
     @NotNull
-    private String name;
+    private String userName;
 
     @NotNull
     @Email
@@ -16,12 +16,12 @@ public class UserRequestModel {
     @Size(min = 8)
     private String password;
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {

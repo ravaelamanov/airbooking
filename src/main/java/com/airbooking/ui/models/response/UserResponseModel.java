@@ -2,7 +2,7 @@ package com.airbooking.ui.models.response;
 
 public class UserResponseModel {
     private Long id;
-    private String name;
+    private String userName;
     private String email;
 
     public Long getId() {
@@ -13,12 +13,12 @@ public class UserResponseModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
