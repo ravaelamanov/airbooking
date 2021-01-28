@@ -2,10 +2,7 @@ package com.airbooking.da.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "SeatsPriceList")
@@ -14,6 +11,9 @@ public class SeatsPriceList {
     @GeneratedValue(generator = "incrementor")
     @GenericGenerator(name = "incrementor", strategy = "increment")
     private int Id;
+
+    @OneToOne
+    private Flight flight;
 
     private double firstClassSeatPrice;
 
@@ -29,6 +29,14 @@ public class SeatsPriceList {
 
     public void setId(int id) {
         Id = id;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 
     public double getFirstClassSeatPrice() {
