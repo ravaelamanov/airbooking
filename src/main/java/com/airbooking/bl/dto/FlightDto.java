@@ -24,6 +24,16 @@ public class FlightDto {
 
     private List<PassengerDto> passengers;
 
+    private SeatsPriceListDto seatsPriceListDto;
+
+    public SeatsPriceListDto getSeatsPriceListDto() {
+        return seatsPriceListDto;
+    }
+
+    public void setSeatsPriceListDto(SeatsPriceListDto seatsPriceListDto) {
+        this.seatsPriceListDto = seatsPriceListDto;
+    }
+
     public Long getId() {
         return Id;
     }
