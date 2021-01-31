@@ -13,7 +13,7 @@ public class AirplaneSeatsInfo {
     @GenericGenerator(name = "incrementor", strategy = "increment")
     private Long Id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "airplaneSeatsInfo", optional = false)
     private Airplane airplane;
 
     private int firstClassSeatCount;
