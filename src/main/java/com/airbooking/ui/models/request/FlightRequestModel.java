@@ -1,5 +1,6 @@
 package com.airbooking.ui.models.request;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -24,6 +25,7 @@ public class FlightRequestModel {
 
     private String airplaneName;
 
+    @Valid
     private SeatsPriceListRequestModel seatsPriceListRequestModel;
 
     public SeatsPriceListRequestModel getSeatsPriceListRequestModel() {
