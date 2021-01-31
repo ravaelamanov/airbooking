@@ -1,5 +1,8 @@
 package com.airbooking.ui.models.request;
 
+import javax.validation.constraints.Min;
+
+@Min(value = 0)
 public class SeatsPriceListRequestModel {
     private double firstClassSeatPrice;
 
