@@ -4,7 +4,11 @@ import com.airbooking.bl.dto.AirplaneSeatsInfoDto;
 import com.airbooking.da.entities.AirplaneSeatsInfo;
 import com.airbooking.da.repositories.AirplaneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
+@Component
 public class AirplaneSeatsInfoMapper extends AbstractMapper<AirplaneSeatsInfoDto, AirplaneSeatsInfo> {
     @Autowired
     private AirplaneRepository airplaneRepository;
@@ -19,6 +23,7 @@ public class AirplaneSeatsInfoMapper extends AbstractMapper<AirplaneSeatsInfoDto
         return modelMapper.map(airplaneSeatsInfoDto, AirplaneSeatsInfo.class);
     }
 
+    @PostConstruct
     @Override
     protected void setupMapper() {
         modelMapper.createTypeMap(AirplaneSeatsInfo.class, AirplaneSeatsInfoDto.class).addMappings(m -> m.skip(AirplaneSeatsInfoDto::setAirplaneId)).setPostConverter(entityDtoConverter());
@@ -27,7 +32,10 @@ public class AirplaneSeatsInfoMapper extends AbstractMapper<AirplaneSeatsInfoDto
 
     @Override
     protected void dtoEntityCustomMapping(AirplaneSeatsInfoDto airplaneSeatsInfoDto, AirplaneSeatsInfo airplaneSeatsInfo) {
-        airplaneSeatsInfo.setAirplane(airplaneRepository.findById(airplaneSeatsInfoDto.getAirplaneId()).orElse(null));
+        Long airplaneId = airplaneSeatsInfoDto.getAirplaneId();
+        if (airplaneId != null) {
+            airplaneSeatsInfo.setAirplane(airplaneRepository.findById(airplaneSeatsInfoDto.getAirplaneId()).orElse(null));
+        }
     }
 
     @Override
