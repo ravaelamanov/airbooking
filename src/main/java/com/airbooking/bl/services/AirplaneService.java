@@ -11,4 +11,8 @@ public class AirplaneService extends AbstractService<AirplaneDto, Airplane, Long
     protected AirplaneService(@Autowired AirplaneRepository repository) {
         super(repository);
     }
+
+    public AirplaneDto findByName(String name) {
+        return modelMapper.toDto(((AirplaneRepository) repository).findByName(name));
+    }
 }
