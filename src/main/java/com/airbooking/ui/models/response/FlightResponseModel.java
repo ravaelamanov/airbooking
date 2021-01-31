@@ -2,10 +2,6 @@ package com.airbooking.ui.models.response;
 
 import java.time.LocalDateTime;
 
-//TODO:
-// - create request model => dto, dto => response model mappers
-// - create airplane controller
-
 public class FlightResponseModel {
     private String flightNo;
 
