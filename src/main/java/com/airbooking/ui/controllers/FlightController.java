@@ -36,18 +36,23 @@ public class FlightController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createFlight() {
-
+    public void createFlight(@RequestBody @Valid FlightRequestModel flightRequestModel) {
+        flightService.create(modelMapper.toDto(flightRequestModel));
     }
 
     @PutMapping(path = "/{flightId}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateFlight(@PathVariable Long flightId) {
-
+    public void updateFlight(@PathVariable Long flightId,
+                             @RequestBody @Valid FlightRequestModel flightRequestModel) {
+        FlightDto flightDto = modelMapper.toDto(flightRequestModel);
+        flightDto.setId(flightId);
+        flightService.update(flightDto);
+        //TODO think about update request model
     }
 
     @DeleteMapping(path = "/{flightId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long flightId) {
+        flightService.deleteById(flightId);
     }
 }
