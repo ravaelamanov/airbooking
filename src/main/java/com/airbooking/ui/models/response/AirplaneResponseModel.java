@@ -1,11 +1,9 @@
 package com.airbooking.ui.models.response;
 
-import com.airbooking.bl.dto.AirplaneSeatsInfoDto;
-
 public class AirplaneResponseModel {
     private String name;
 
-    private AirplaneSeatsInfoDto airplaneSeatsInfoDto;
+    private AirplaneSeatsInfoResponseModel airplaneSeatsInfoResponseModel;
 
     public String getName() {
         return name;
@@ -15,11 +13,11 @@ public class AirplaneResponseModel {
         this.name = name;
     }
 
-    public AirplaneSeatsInfoDto getAirplaneSeatsInfoDto() {
-        return airplaneSeatsInfoDto;
+    public AirplaneSeatsInfoResponseModel getAirplaneSeatsInfoResponseModel() {
+        return airplaneSeatsInfoResponseModel;
     }
 
-    public void setAirplaneSeatsInfoDto(AirplaneSeatsInfoDto airplaneSeatsInfoDto) {
-        this.airplaneSeatsInfoDto = airplaneSeatsInfoDto;
+    public void setAirplaneSeatsInfoResponseModel(AirplaneSeatsInfoResponseModel airplaneSeatsInfoResponseModel) {
+        this.airplaneSeatsInfoResponseModel = airplaneSeatsInfoResponseModel;
     }
 }
