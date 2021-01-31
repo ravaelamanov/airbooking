@@ -1,10 +1,13 @@
 package com.airbooking.ui.models.request;
 
-import com.airbooking.bl.dto.AirplaneSeatsInfoDto;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
+@NotNull
 public class AirplaneRequestModel {
     private String name;
 
+    @Valid
     private AirplaneSeatsInfoRequestModel airplaneSeatsInfoRequestModel;
 
     public String getName() {
