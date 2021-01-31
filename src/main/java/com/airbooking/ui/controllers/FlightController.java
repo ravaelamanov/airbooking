@@ -1,15 +1,15 @@
 package com.airbooking.ui.controllers;
 
-import com.airbooking.bl.services.AirplaneService;
+import com.airbooking.bl.dto.FlightDto;
 import com.airbooking.bl.services.FlightService;
+import com.airbooking.ui.mappers.IMapper;
+import com.airbooking.ui.models.request.FlightRequestModel;
 import com.airbooking.ui.models.response.FlightResponseModel;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("flights")
@@ -19,24 +19,19 @@ public class FlightController {
     private FlightService flightService;
 
     @Autowired
-    private AirplaneService airplaneService;
-
-    @Autowired
-    private ModelMapper modelMapper;
+    private IMapper<FlightResponseModel, FlightRequestModel, FlightDto> modelMapper;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<FlightResponseModel> getFlights() {
-        List<FlightResponseModel> responseModels = new ArrayList<>();
-        flightService.findAll().forEach(flightDto -> {responseModels.add(modelMapper.map(flightDto, FlightResponseModel.class));});
-        return responseModels;
+    public Iterable<FlightResponseModel> getFlights() {
+        return modelMapper.toResponseModel(flightService.findAll());
 
     }
 
     @GetMapping(path = "/{flightId}")
     @ResponseStatus(HttpStatus.OK)
     public FlightResponseModel getFlight(@PathVariable Long flightId) {
-        return modelMapper.map(flightService.findById(flightId), FlightResponseModel.class);
+        return modelMapper.toResponseModel(flightService.findById(flightId));
     }
 
     @PostMapping
