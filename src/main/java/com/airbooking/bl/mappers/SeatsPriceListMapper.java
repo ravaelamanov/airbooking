@@ -4,7 +4,11 @@ import com.airbooking.bl.dto.SeatsPriceListDto;
 import com.airbooking.da.entities.SeatsPriceList;
 import com.airbooking.da.repositories.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
+@Component
 public class SeatsPriceListMapper extends AbstractMapper<SeatsPriceListDto, SeatsPriceList> {
     @Autowired
     private FlightRepository flightRepository;
@@ -19,6 +23,7 @@ public class SeatsPriceListMapper extends AbstractMapper<SeatsPriceListDto, Seat
         return modelMapper.map(seatsPriceListDto, SeatsPriceList.class);
     }
 
+    @PostConstruct
     @Override
     protected void setupMapper() {
         modelMapper.createTypeMap(SeatsPriceList.class, SeatsPriceListDto.class).addMappings(m -> m.skip(SeatsPriceListDto::setFlightId)).setPostConverter(entityDtoConverter());
