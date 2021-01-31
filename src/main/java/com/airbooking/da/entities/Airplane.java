@@ -16,10 +16,10 @@ public class Airplane {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToOne(mappedBy = "airplane")
+    @OneToOne(mappedBy = "airplane", cascade = CascadeType.ALL)
     private AirplaneSeatsInfo airplaneSeatsInfo;
 
-    @OneToMany(mappedBy = "airplane")
+    @OneToMany(mappedBy = "airplane", cascade = CascadeType.ALL)
     private List<Flight> flights;
 
     public List<Flight> getFlights() {
