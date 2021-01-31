@@ -6,6 +6,8 @@ import com.airbooking.da.repositories.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component
 public class PassengerMapper extends AbstractMapper<PassengerDto, Passenger> {
     @Autowired
@@ -21,6 +23,7 @@ public class PassengerMapper extends AbstractMapper<PassengerDto, Passenger> {
         return null;
     }
 
+    @PostConstruct
     @Override
     protected void setupMapper() {
         modelMapper.createTypeMap(Passenger.class, PassengerDto.class).addMappings(m -> m.skip(PassengerDto::setFlightId)).setPostConverter(entityDtoConverter());
