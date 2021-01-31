@@ -5,6 +5,8 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
+//FIXME revise airplane mapping
+
 @Entity
 @Table(name = "AIRPLANES")
 public class Airplane {
@@ -16,7 +18,7 @@ public class Airplane {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToOne(mappedBy = "airplane", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private AirplaneSeatsInfo airplaneSeatsInfo;
 
     @OneToMany(mappedBy = "airplane", cascade = CascadeType.ALL)
