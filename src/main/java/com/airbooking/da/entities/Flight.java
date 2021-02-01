@@ -41,7 +41,7 @@ public class Flight {
     @OneToMany(mappedBy = "flight")
     private List<Passenger> passengers;
 
-    @OneToOne(mappedBy = "flight")
+    @OneToOne(cascade = CascadeType.ALL)
     private SeatsPriceList seatsPriceList;
 
     public Long getId() {
@@ -130,5 +130,6 @@ public class Flight {
 
     public void setSeatsPriceList(SeatsPriceList seatsPriceList) {
         this.seatsPriceList = seatsPriceList;
+        seatsPriceList.setFlight(this);
     }
 }
