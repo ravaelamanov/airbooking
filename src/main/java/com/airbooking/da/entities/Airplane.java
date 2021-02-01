@@ -55,5 +55,6 @@ public class Airplane {
 
     public void setAirplaneSeatsInfo(AirplaneSeatsInfo airplaneSeatsInfo) {
         this.airplaneSeatsInfo = airplaneSeatsInfo;
+        airplaneSeatsInfo.setAirplane(this);
     }
 }
