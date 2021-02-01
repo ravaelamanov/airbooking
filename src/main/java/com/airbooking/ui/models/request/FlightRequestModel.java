@@ -3,14 +3,20 @@ package com.airbooking.ui.models.request;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import java.time.LocalDateTime;
 
 @NotNull
 public class FlightRequestModel {
     private String flightNo;
 
+    @DateTimeFormat(iso = ISO.DATE_TIME)
     private LocalDateTime departureDateTime;
 
+    @DateTimeFormat(iso = ISO.DATE_TIME)
     private LocalDateTime arrivalDateTime;
 
     @Size(min = 3, max = 3)
