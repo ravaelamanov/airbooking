@@ -12,7 +12,7 @@ public class SeatsPriceList {
     @GenericGenerator(name = "incrementor", strategy = "increment")
     private int Id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "seatsPriceList")
     private Flight flight;
 
     private double firstClassSeatPrice;
