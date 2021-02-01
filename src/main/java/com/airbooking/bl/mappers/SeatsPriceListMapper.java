@@ -32,7 +32,10 @@ public class SeatsPriceListMapper extends AbstractMapper<SeatsPriceListDto, Seat
 
     @Override
     protected void dtoEntityCustomMapping(SeatsPriceListDto seatsPriceListDto, SeatsPriceList seatsPriceList) {
-        seatsPriceList.setFlight(flightRepository.findById(seatsPriceListDto.getFlightId()).orElse(null));
+        Long flightId = seatsPriceListDto.getFlightId();
+        if (flightId != null) {
+            seatsPriceList.setFlight(flightRepository.findById(flightId).orElse(null));
+        }
     }
 
     @Override
