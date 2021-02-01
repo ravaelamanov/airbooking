@@ -26,8 +26,13 @@ public class AirplaneSeatsInfoMapper extends AbstractMapper<AirplaneSeatsInfoDto
     @PostConstruct
     @Override
     protected void setupMapper() {
-        modelMapper.createTypeMap(AirplaneSeatsInfo.class, AirplaneSeatsInfoDto.class).addMappings(m -> m.skip(AirplaneSeatsInfoDto::setAirplaneId)).setPostConverter(entityDtoConverter());
-        modelMapper.createTypeMap(AirplaneSeatsInfoDto.class, AirplaneSeatsInfo.class).addMappings(m -> m.skip(AirplaneSeatsInfo::setAirplane)).setPostConverter(dtoEntityConverter());
+        modelMapper.createTypeMap(AirplaneSeatsInfo.class, AirplaneSeatsInfoDto.class).
+            addMappings(m -> m.skip(AirplaneSeatsInfoDto::setAirplaneId)).
+            setPostConverter(entityDtoConverter());
+            
+        modelMapper.createTypeMap(AirplaneSeatsInfoDto.class, AirplaneSeatsInfo.class).
+            addMappings(m -> m.skip(AirplaneSeatsInfo::setAirplane)).
+            setPostConverter(dtoEntityConverter());
     }
 
     @Override
