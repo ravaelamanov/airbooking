@@ -36,8 +36,8 @@ public class FlightController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createFlight(@RequestBody @Valid FlightRequestModel flightRequestModel) {
-        flightService.create(modelMapper.toDto(flightRequestModel));
+    public FlightResponseModel createFlight(@RequestBody @Valid FlightRequestModel flightRequestModel) {
+       return modelMapper.toResponseModel(flightService.create(modelMapper.toDto(flightRequestModel)));
     }
 
     @PutMapping(path = "/{flightId}")
