@@ -1,15 +1,18 @@
 package com.airbooking.ui.models.request;
 
-import javax.validation.constraints.Min;
+import javax.validation.constraints.PositiveOrZero;
 
-@Min(value = 0)
 public class AirplaneSeatsInfoRequestModel {
+    @PositiveOrZero
     private int firstClassSeatCount;
 
+    @PositiveOrZero
     private int businessClassSeatCount;
 
+    @PositiveOrZero
     private int premiumEconomyClassSeatCount;
 
+    @PositiveOrZero
     private int economyClassSeatCount;
 
     public int getFirstClassSeatCount() {

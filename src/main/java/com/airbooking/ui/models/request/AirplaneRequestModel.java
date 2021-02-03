@@ -1,13 +1,17 @@
 package com.airbooking.ui.models.request;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@NotNull
+//FIXME validation not working
+
 public class AirplaneRequestModel {
+    @NotEmpty
     private String name;
 
-    @Valid
+    @NotNull
+    @Valid 
     private AirplaneSeatsInfoRequestModel airplaneSeatsInfoRequestModel;
 
     public String getName() {
