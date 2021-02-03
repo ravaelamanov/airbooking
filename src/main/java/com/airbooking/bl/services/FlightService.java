@@ -11,4 +11,9 @@ public class FlightService extends AbstractService<FlightDto, Flight, Long> {
     protected FlightService(@Autowired FlightRepository repository) {
         super(repository);
     }
+
+    public Iterable<FlightDto> findBetweenCities(String from, String to) {
+        Iterable<Flight> result = ((FlightRepository) repository).findByDepartureCityAndArrivalCity(from, to);
+        return modelMapper.toDto(result);
+    }
 }
