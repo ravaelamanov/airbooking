@@ -41,8 +41,8 @@ public class AirplaneController {
 
     @PutMapping(path = "/{airplaneId}")
     @ResponseStatus(HttpStatus.OK)
-    public AirplaneResponseModel updateFlight(@PathVariable Long airplaneId,
-                             @RequestBody @Valid AirplaneRequestModel airplaneRequestModel) {
+    public AirplaneResponseModel updateAirplane(@PathVariable Long airplaneId,
+                                                @RequestBody @Valid AirplaneRequestModel airplaneRequestModel) {
         AirplaneDto airplaneDto = modelMapper.toDto(airplaneRequestModel);
         airplaneDto.setId(airplaneId);
         return modelMapper.toResponseModel(airplaneService.update(airplaneDto));
