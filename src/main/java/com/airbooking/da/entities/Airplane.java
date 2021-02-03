@@ -5,8 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
-//FIXME revise airplane mapping
-
 @Entity
 @Table(name = "AIRPLANES")
 public class Airplane {
