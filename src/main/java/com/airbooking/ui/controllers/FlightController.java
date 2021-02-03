@@ -25,7 +25,6 @@ public class FlightController {
     @ResponseStatus(HttpStatus.OK)
     public Iterable<FlightResponseModel> getFlights() {
         return modelMapper.toResponseModel(flightService.findAll());
-
     }
 
     @GetMapping(path = "/{flightId}")
