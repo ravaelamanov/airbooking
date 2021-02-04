@@ -33,6 +33,7 @@ public class Passenger {
     private Flight flight;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private SeatClass seatClass;
 
     public Long getId() {
