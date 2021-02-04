@@ -26,6 +26,11 @@ public class FlightDto {
 
     private SeatsPriceListDto seatsPriceListDto;
 
+    public void addPassenger(PassengerDto passengerDto) {
+        passengers.add(passengerDto);
+        passengerDto.setFlightId(Id);
+    }
+
     public SeatsPriceListDto getSeatsPriceListDto() {
         return seatsPriceListDto;
     }
