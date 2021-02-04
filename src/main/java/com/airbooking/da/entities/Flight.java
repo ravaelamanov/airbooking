@@ -38,7 +38,7 @@ public class Flight {
     @ManyToOne
     private Airplane airplane;
 
-    @OneToMany(mappedBy = "flight")
+    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
     private List<Passenger> passengers;
 
     @OneToOne(cascade = CascadeType.ALL)
