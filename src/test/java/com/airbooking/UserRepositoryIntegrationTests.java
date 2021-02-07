@@ -30,7 +30,7 @@ public class UserRepositoryIntegrationTests {
     @Before
     public void setUp(){
         user = new User();
-        user.setUserName("name");
+        user.setUsername("name");
         user.setEmail("user@gmail.com");
         user.setPassword("pass");
     }
@@ -47,7 +47,7 @@ public class UserRepositoryIntegrationTests {
 
         //then
         assertThat(userList.size()).isEqualTo(1);
-        assertThat(userList.get(0).getUserName()).isEqualTo(user.getUserName());
+        assertThat(userList.get(0).getUsername()).isEqualTo(user.getUsername());
         assertThat(userList.get(0).getEmail()).isEqualTo(user.getEmail());
         assertThat(userList.get(0).getPassword()).isEqualTo(user.getPassword());
     }
@@ -61,7 +61,7 @@ public class UserRepositoryIntegrationTests {
         User retrievedUser = userRepository.findById(persistedUser.getId()).get();
 
         //then
-        assertThat(retrievedUser.getUserName()).isEqualTo(persistedUser.getUserName());
+        assertThat(retrievedUser.getUsername()).isEqualTo(persistedUser.getUsername());
         assertThat(retrievedUser.getEmail()).isEqualTo(persistedUser.getEmail());
         assertThat(retrievedUser.getPassword()).isEqualTo(persistedUser.getPassword());
     }
@@ -73,7 +73,7 @@ public class UserRepositoryIntegrationTests {
         User persistedUser = userRepository.save(user);
         //then
         User retrievedUser = testEntityManager.find(user.getClass(), user.getId());
-        assertThat(retrievedUser.getUserName()).isEqualTo(persistedUser.getUserName());
+        assertThat(retrievedUser.getUsername()).isEqualTo(persistedUser.getUsername());
         assertThat(retrievedUser.getEmail()).isEqualTo(persistedUser.getEmail());
         assertThat(retrievedUser.getPassword()).isEqualTo(persistedUser.getPassword());
     }
@@ -83,14 +83,14 @@ public class UserRepositoryIntegrationTests {
         //given
         User persistedUser = testEntityManager.persistAndFlush(user);
         //when
-        persistedUser.setUserName("updatedUserName");
+        persistedUser.setUsername("updatedUserName");
         persistedUser.setPassword("updatedPassword");
         persistedUser.setEmail("udpatedEmail@gmail.com");
         User updatedUser = userRepository.save(persistedUser);
         //then
         User retrievedUser = testEntityManager.find(updatedUser.getClass(), updatedUser.getId());
         assertThat(updatedUser.getId()).isEqualTo(retrievedUser.getId());
-        assertThat(updatedUser.getUserName()).isEqualTo(retrievedUser.getUserName());
+        assertThat(updatedUser.getUsername()).isEqualTo(retrievedUser.getUsername());
         assertThat(updatedUser.getEmail()).isEqualTo(retrievedUser.getEmail());
         assertThat(updatedUser.getPassword()).isEqualTo(retrievedUser.getPassword());
     }

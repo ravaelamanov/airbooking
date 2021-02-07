@@ -1,4 +1,4 @@
-package com.airbooking;
+package com.airbooking.config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
