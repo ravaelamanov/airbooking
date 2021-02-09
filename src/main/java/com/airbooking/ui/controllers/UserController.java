@@ -51,7 +51,7 @@ public class UserController {
     public UserResponseModel updateUser(@PathVariable Long userId,
                                         @Valid @RequestBody UserUpdateRequestModel userUpdateRequestModel) {
         UserDto userDto = userService.findById(userId);
-        userDto.setUserName(userUpdateRequestModel.getName());
+        userDto.setUsername(userUpdateRequestModel.getName());
         return modelMapper.map(userService.update(userDto), UserResponseModel.class);
     }
 
