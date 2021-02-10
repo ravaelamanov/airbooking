@@ -1,5 +1,14 @@
 package com.airbooking.bl.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class SeatsPriceListDto {
     private int Id;
 
@@ -12,52 +21,4 @@ public class SeatsPriceListDto {
     private double premiumEconomyClassSeatPrice;
 
     private double economyClassSeatPrice;
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
-    }
-
-    public Long getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(Long flightId) {
-        this.flightId = flightId;
-    }
-
-    public double getFirstClassSeatPrice() {
-        return firstClassSeatPrice;
-    }
-
-    public void setFirstClassSeatPrice(double firstClassSeatPrice) {
-        this.firstClassSeatPrice = firstClassSeatPrice;
-    }
-
-    public double getBusinessClassSeatPrice() {
-        return businessClassSeatPrice;
-    }
-
-    public void setBusinessClassSeatPrice(double businessClassSeatPrice) {
-        this.businessClassSeatPrice = businessClassSeatPrice;
-    }
-
-    public double getPremiumEconomyClassSeatPrice() {
-        return premiumEconomyClassSeatPrice;
-    }
-
-    public void setPremiumEconomyClassSeatPrice(double premiumEconomyClassSeatPrice) {
-        this.premiumEconomyClassSeatPrice = premiumEconomyClassSeatPrice;
-    }
-
-    public double getEconomyClassSeatPrice() {
-        return economyClassSeatPrice;
-    }
-
-    public void setEconomyClassSeatPrice(double economyClassSeatPrice) {
-        this.economyClassSeatPrice = economyClassSeatPrice;
-    }
 }
