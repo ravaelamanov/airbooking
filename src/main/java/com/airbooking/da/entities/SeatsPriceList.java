@@ -1,19 +1,11 @@
 package com.airbooking.da.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "SeatsPriceList")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class SeatsPriceList {
     @Id
     @GeneratedValue(generator = "incrementor")
@@ -30,4 +22,52 @@ public class SeatsPriceList {
     private double premiumEconomyClassSeatPrice;
 
     private double economyClassSeatPrice;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public double getFirstClassSeatPrice() {
+        return firstClassSeatPrice;
+    }
+
+    public void setFirstClassSeatPrice(double firstClassSeatPrice) {
+        this.firstClassSeatPrice = firstClassSeatPrice;
+    }
+
+    public double getBusinessClassSeatPrice() {
+        return businessClassSeatPrice;
+    }
+
+    public void setBusinessClassSeatPrice(double businessClassSeatPrice) {
+        this.businessClassSeatPrice = businessClassSeatPrice;
+    }
+
+    public double getPremiumEconomyClassSeatPrice() {
+        return premiumEconomyClassSeatPrice;
+    }
+
+    public void setPremiumEconomyClassSeatPrice(double premiumEconomyClassSeatPrice) {
+        this.premiumEconomyClassSeatPrice = premiumEconomyClassSeatPrice;
+    }
+
+    public double getEconomyClassSeatPrice() {
+        return economyClassSeatPrice;
+    }
+
+    public void setEconomyClassSeatPrice(double economyClassSeatPrice) {
+        this.economyClassSeatPrice = economyClassSeatPrice;
+    }
 }

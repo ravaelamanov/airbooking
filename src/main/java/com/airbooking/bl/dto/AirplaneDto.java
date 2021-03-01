@@ -1,16 +1,7 @@
 package com.airbooking.bl.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class AirplaneDto {
     private Long Id;
 
@@ -19,4 +10,36 @@ public class AirplaneDto {
     private AirplaneSeatsInfoDto airplaneSeatsInfoDto;
 
     private List<FlightDto> flights;
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public AirplaneSeatsInfoDto getAirplaneSeatsInfoDto() {
+        return airplaneSeatsInfoDto;
+    }
+
+    public void setAirplaneSeatsInfoDto(AirplaneSeatsInfoDto airplaneSeatsInfoDto) {
+        this.airplaneSeatsInfoDto = airplaneSeatsInfoDto;
+    }
+
+    public List<FlightDto> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<FlightDto> flights) {
+        this.flights = flights;
+    }
 }

@@ -1,4 +1,3 @@
-/*
 package com.airbooking;
 
 import com.airbooking.da.entities.User;
@@ -107,4 +106,3 @@ public class UserRepositoryIntegrationTests {
     }
 
 }
-*/

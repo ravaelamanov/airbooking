@@ -1,10 +1,6 @@
 package com.airbooking.da.entities;
 
 import com.airbooking.da.util.SeatClass;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,10 +8,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PASSENGERS")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Passenger {
     @Id
     @GeneratedValue(generator = "incrementor")
@@ -43,4 +35,68 @@ public class Passenger {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private SeatClass seatClass;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassportNo() {
+        return passportNo;
+    }
+
+    public void setPassportNo(String passportNo) {
+        this.passportNo = passportNo;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public SeatClass getSeatClass() {
+        return seatClass;
+    }
+
+    public void setSeatClass(SeatClass seatClass) {
+        this.seatClass = seatClass;
+    }
 }

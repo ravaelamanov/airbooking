@@ -1,9 +1,5 @@
 package com.airbooking.da.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,9 +7,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "AIRPLANES")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Airplane {
     @Id
     @GeneratedValue(generator = "incrementor")
@@ -28,6 +21,35 @@ public class Airplane {
 
     @OneToMany(mappedBy = "airplane", cascade = CascadeType.ALL)
     private List<Flight> flights;
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public AirplaneSeatsInfo getAirplaneSeatsInfo() {
+        return airplaneSeatsInfo;
+    }
 
     public void setAirplaneSeatsInfo(AirplaneSeatsInfo airplaneSeatsInfo) {
         this.airplaneSeatsInfo = airplaneSeatsInfo;

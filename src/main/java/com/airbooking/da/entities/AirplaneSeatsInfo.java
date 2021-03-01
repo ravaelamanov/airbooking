@@ -1,19 +1,11 @@
 package com.airbooking.da.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "AirplaneSeatsInfo")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class AirplaneSeatsInfo {
 
     @Id
@@ -31,4 +23,52 @@ public class AirplaneSeatsInfo {
     private int premiumEconomyClassSeatCount;
 
     private int economyClassSeatCount;
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public int getFirstClassSeatCount() {
+        return firstClassSeatCount;
+    }
+
+    public void setFirstClassSeatCount(int firstClassSeatCount) {
+        this.firstClassSeatCount = firstClassSeatCount;
+    }
+
+    public int getBusinessClassSeatCount() {
+        return businessClassSeatCount;
+    }
+
+    public void setBusinessClassSeatCount(int businessClassSeatCount) {
+        this.businessClassSeatCount = businessClassSeatCount;
+    }
+
+    public int getPremiumEconomyClassSeatCount() {
+        return premiumEconomyClassSeatCount;
+    }
+
+    public void setPremiumEconomyClassSeatCount(int premiumEconomyClassSeatCount) {
+        this.premiumEconomyClassSeatCount = premiumEconomyClassSeatCount;
+    }
+
+    public int getEconomyClassSeatCount() {
+        return economyClassSeatCount;
+    }
+
+    public void setEconomyClassSeatCount(int economyClassSeatCount) {
+        this.economyClassSeatCount = economyClassSeatCount;
+    }
+
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
 }
